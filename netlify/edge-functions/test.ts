@@ -1,17 +1,3 @@
-import { Context } from "netlify:edge";
+import { Context } from 'netlify:edge';
 
-export default async (request: Request, context: Context) => {
-  const url = new URL(request.url);
-  const slug = url.pathname.split("/test/")[1];
-
-  if (!slug) {
-    return {
-      status: 400,
-      body: "Missing slug"
-    };
-  }
-
-  return {
-    status: 200
-  }
-}
+export default async (request: Request, context: Context) => new Response(request.url, { status: 200 });
